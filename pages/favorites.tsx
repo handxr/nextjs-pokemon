@@ -1,8 +1,6 @@
 import { Card, Container, Grid, Text } from "@nextui-org/react";
 import { Layout } from "components/layouts";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { Favorites } from "utils";
+import { useFavoritePokemon } from "features/pokemon/hooks";
 
 const NoResults = () => {
   return (
@@ -20,26 +18,14 @@ const NoResults = () => {
   );
 };
 
-const getFavorites = (): number[] => new Favorites().get();
-
 const FavoritesPage = () => {
-  const router = useRouter();
-  const [favoritesPokemons, setFavoritesPokemons] = useState<number[]>([]);
-
-  const onFavoriteClick = (pokemonId: number) => {
-    router.push(`/pokemon/${pokemonId}`);
-  };
-
-  useEffect(() => {
-    const favorites = getFavorites();
-    setFavoritesPokemons(favorites);
-  }, []);
+  const { favoritesPokemons, onFavoriteClick } = useFavoritePokemon();
 
   return (
     <Layout title="Pokemons - Favorites">
       {favoritesPokemons.length > 0 ? (
         <Grid.Container gap={2} direction="row" justify="flex-start">
-          {favoritesPokemons.map((pokemonId) => (
+          {favoritesPokemons.map((pokemonId: number) => (
             <Grid key={pokemonId} xs={6} sm={3} md={2} xl={1}>
               <Card
                 isHoverable
