@@ -28,6 +28,7 @@ export const PokemonCard = ({ pokemon }: PokemonCardProps) => {
             height={140}
             style={{
               width: "100%",
+              height: "100%",
             }}
             alt={pokemon.name}
             placeholder="blur"

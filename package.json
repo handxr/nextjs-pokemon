@@ -23,7 +23,9 @@
   },
   "devDependencies": {
     "@types/canvas-confetti": "^1.6.0",
+    "@types/nprogress": "^0.2.0",
     "axios": "^1.2.2",
-    "canvas-confetti": "^1.6.0"
+    "canvas-confetti": "^1.6.0",
+    "nprogress": "^0.2.0"
   }
 }
